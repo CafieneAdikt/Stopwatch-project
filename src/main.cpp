@@ -30,7 +30,7 @@ void loop() {
   static unsigned long timer = millis();
   static int deciSeconds = 0;
   
-  if(counter_running == true){
+  
   if (millis() >= timer) {
     deciSeconds++; // 100 milliSeconds is equal to 1 deciSecond
     timer += 100; 
@@ -39,7 +39,7 @@ void loop() {
     }
     sevseg.setNumber(deciSeconds, 1);
   }
-  
+  if(counter_running == true){
   sevseg.refreshDisplay(); // Must run repeatedly
   }
 }
@@ -53,7 +53,7 @@ void Buttonpressed_ISR() {
   if (buttonPressed &&
       ((currentmillis - previousDebounce) >= DEBOUNCE_TIME_MS)) {
     previousDebounce = currentmillis; // set new debounce time
-    counter_running = !counter_running; // toggle state
+    counter_running = !counter_running; // toggles state
     buttonPressed = false;
 
   }
